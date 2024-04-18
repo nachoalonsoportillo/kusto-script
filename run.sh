@@ -48,6 +48,7 @@ function execute_script() {
     -execute:"#save output.out" \
     -execute:"#script $script_fullpath"
   echo "THERE"
+  ls
   cat output.out
 }
 set -e
