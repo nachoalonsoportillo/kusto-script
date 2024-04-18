@@ -79,6 +79,8 @@ fi
 
 echo "$script_fullpath"
 
+echo $KUSTO_CLI_PATH
+
 dotnet $KUSTO_CLI_PATH "$connectionString" \
   -execute:"#blockmode" \
   -execute:"#timeoff" \
