@@ -75,13 +75,18 @@ connectionString="$uri;$auth"
 
 echo "Connection string: $connectionString"
 
-if [ ! -z "$script_relativepath" ]; then
-    script_fullpath="$GITHUB_WORKSPACE/$script_relativepath"
-    result=$(execute_script "$script_fullpath" "$connectionString")
-else
-    echo "No script provided"
-    exit 1
-fi
+#if [ ! -z "$script_relativepath" ]; then
+#    script_fullpath="$GITHUB_WORKSPACE/$script_relativepath"
+#    result=$(execute_script "$script_fullpath" "$connectionString")
+#else
+#    echo "No script provided"
+#    exit 1
+#fi
+
+dotnet $KUSTO_CLI_PATH "$connectionString" \
+  -execute:"#blockmode" \
+  -execute:"#save output.out" \
+  -execute:"#script $script_fullpath"
 
 echo "result=<<EOF" >> $GITHUB_OUTPUT
 cat output.out >> $GITHUB_OUTPUT
