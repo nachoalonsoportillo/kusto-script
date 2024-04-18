@@ -37,4 +37,5 @@ runs:
         export KUSTO_CLI_PATH="${{ env.KUSTO_CLI_PATH }}"
         ./kusto-script/run.sh \
             -s '${{ inputs.kusto-script }}' \
+            -u '${{ inputs.kusto-uri }}'
       shell: bash
