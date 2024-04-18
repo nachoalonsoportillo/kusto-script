@@ -85,16 +85,14 @@ dotnet $KUSTO_CLI_PATH "$connectionString" \
   -execute:"#save output.out" \
   -execute:"#script $script_fullpath"
 
-cat output.out
 sed -i 's/"//g' output.out
 sed -i 's/^ *//' output.out
 sed -i 's/ *$//' output.out
 sed -i '1d' output.out
-cat output.out
 
 echo "HASTA AQUI"
 
-#echo "result=<<\"EOF\"" >> $GITHUB_OUTPUT
-#cat output.out >> $GITHUB_OUTPUT
-#echo "EOF" >> $GITHUB_OUTPUT
+echo "result=<<\"EOF\"" >> $GITHUB_OUTPUT
+cat output.out >> $GITHUB_OUTPUT
+echo "EOF" >> $GITHUB_OUTPUT
 echo "HASTA AQUI4"
