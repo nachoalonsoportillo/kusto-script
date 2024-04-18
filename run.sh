@@ -81,6 +81,7 @@ echo "$script_fullpath"
 
 dotnet $KUSTO_CLI_PATH "$connectionString" \
   -execute:"#blockmode" \
+  -execute:"#timeoff" \
   -execute:"#save output.out" \
   -execute:"#script $script_fullpath"
 
@@ -92,8 +93,8 @@ echo "HASTA AQUI"
 
 echo "result=<<\"EOF\"" >> $GITHUB_OUTPUT
 echo "HASTA AQUI2"
-
-cat output.out >> $GITHUB_OUTPUT
+ls
+#cat output.out >> $GITHUB_OUTPUT
 echo "HASTA AQUI3"
 echo "EOF" >> $GITHUB_OUTPUT
 echo "HASTA AQUI4"
