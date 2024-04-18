@@ -43,10 +43,10 @@ function execute_script() {
 
   echo "Executing script: $script_fullpath" >&2
 
-  result=$(dotnet $KUSTO_CLI_PATH "$connectionString" \
+  dotnet $KUSTO_CLI_PATH "$connectionString" \
     -execute:"#blockmode" \
     -execute:"#save output.out" \
-    -execute:"#script $script_fullpath")
+    -execute:"#script $script_fullpath"
 
   cat output.out
 }
