@@ -1,9 +1,4 @@
 name: "Kusto Script"
-description: "Run a Kusto script or inline query against your Kusto cluster in your GitHub Actions workflow"
-author: "philip-gai"
-branding:
-  icon: "play"
-  color: "blue"
 inputs:
   kusto-uri:
     description: "The connection URI for the Kusto cluster or database"
