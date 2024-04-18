@@ -8,25 +8,18 @@ inputs:
   kusto-uri:
     description: "The connection URI for the Kusto cluster or database"
     required: true
-  kusto-query:
-    description: "The Kusto query to run"
   kusto-script:
     description: "The path to the Kusto script to run"
-  kusto-script-folders:
-    description: "Space separated list of paths to folders contains Kusto scripts. Will recursively run all files in the directory"
-  kusto-cli-path:
-    description: "The path on the runner to the Kusto CLI"
-  azure-tenant:
-    description: "A String value that provides the name or ID of the user's tenant. The default value is microsoft.com."
 outputs:
   result:
     description: "The result of the Kusto script or inline query in markdown format"
+    value: ${{ steps.kusto-script.outputs.result}}
 runs:
   using: "composite"
   steps:
     - uses: actions/checkout@v3.5.2
       with:
-        repository: philip-gai/kusto-script
+        repository: nachoalonsoportillo/kusto-script
         path: kusto-script
     - name: Set KUSTO_CLI_PATH
       run: |
@@ -43,9 +36,5 @@ runs:
       run: |
         export KUSTO_CLI_PATH="${{ env.KUSTO_CLI_PATH }}"
         ./kusto-script/run.sh \
-            -f '${{ inputs.kusto-script-folders }}' \
-            -q '${{ inputs.kusto-query }}' \
             -s '${{ inputs.kusto-script }}' \
-            -t '${{ inputs.azure-tenant }}' \
-            -u '${{ inputs.kusto-uri }}'
       shell: bash
