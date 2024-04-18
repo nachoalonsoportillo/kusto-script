@@ -85,6 +85,8 @@ dotnet $KUSTO_CLI_PATH "$connectionString" \
   -execute:"#save output.out" \
   -execute:"#script $script_fullpath"
 
+cat output.out
+
 sed -i 's/^" *//; s/ *"$//' output.out
 sed -i '1d' output.out
 cat output.out
