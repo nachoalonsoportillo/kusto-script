@@ -42,12 +42,12 @@ function execute_script() {
   fi
 
   echo "Executing script: $script_fullpath" >&2
-
+  echo "HERE"
   dotnet $KUSTO_CLI_PATH "$connectionString" \
     -execute:"#blockmode" \
     -execute:"#save output.out" \
     -execute:"#script $script_fullpath"
-
+  echo "THERE"
   cat output.out
 }
 set -e
