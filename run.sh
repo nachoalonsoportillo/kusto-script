@@ -51,12 +51,6 @@ function execute_script() {
   ls >&2
   cat output.out >&2
 }
-set -e
-
-## Path to this script
-#DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
-
-#source "$DIR/functions.sh"
 
 while getopts s:u: flag; do
     case "${flag}" in
@@ -89,6 +83,8 @@ dotnet $KUSTO_CLI_PATH "$connectionString" \
   -execute:"#blockmode" \
   -execute:"#save output.out" \
   -execute:"#script $script_fullpath"
+
+cat output.out
 
 echo "HASTA AQUI"
 
