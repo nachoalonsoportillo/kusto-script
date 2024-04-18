@@ -83,6 +83,8 @@ echo "Connection string: $connectionString"
 #    exit 1
 #fi
 
+echo "$script_fullpath"
+
 dotnet $KUSTO_CLI_PATH "$connectionString" \
   -execute:"#blockmode" \
   -execute:"#save output.out" \
