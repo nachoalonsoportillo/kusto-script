@@ -90,6 +90,12 @@ dotnet $KUSTO_CLI_PATH "$connectionString" \
   -execute:"#save output.out" \
   -execute:"#script $script_fullpath"
 
+echo "HASTA AQUI"
+
 echo "result=<<EOF" >> $GITHUB_OUTPUT
+echo "HASTA AQUI2"
+
 cat output.out >> $GITHUB_OUTPUT
+echo "HASTA AQUI3"
 echo "EOF" >> $GITHUB_OUTPUT
+echo "HASTA AQUI4"
