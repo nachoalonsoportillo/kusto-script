@@ -77,10 +77,6 @@ else
     exit 1
 fi
 
-echo "$script_fullpath"
-
-echo $KUSTO_CLI_PATH
-
 dotnet $KUSTO_CLI_PATH "$connectionString" \
   -execute:"#blockmode" \
   -execute:"#timeoff" \
@@ -91,10 +87,3 @@ sed -i 's/"//g' output.out
 sed -i 's/^ *//' output.out
 sed -i 's/ *$//' output.out
 sed -i '1d' output.out
-
-echo "HASTA AQUI"
-
-echo "result=<<\"EOF\"" >> $GITHUB_OUTPUT
-cat output.out >> $GITHUB_OUTPUT
-echo "EOF" >> $GITHUB_OUTPUT
-echo "HASTA AQUI4"
