@@ -47,6 +47,8 @@ function execute_script() {
     -execute:"#blockmode" \
     -execute:"#save output.out" \
     -execute:"#script $script_fullpath")
+
+  cat output.out
 }
 set -e
 
