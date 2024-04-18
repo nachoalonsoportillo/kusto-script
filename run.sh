@@ -86,9 +86,9 @@ dotnet $KUSTO_CLI_PATH "$connectionString" \
   -execute:"#script $script_fullpath"
 
 cat output.out
-
-sed -i 's/^" *//' output.out
-sed -i 's/ *"$//' output.out
+sed -i 's/"//g' output.out
+sed -i 's/^ *//' output.out
+sed -i 's/ *$//' output.out
 sed -i '1d' output.out
 cat output.out
 
